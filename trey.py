@@ -14,7 +14,7 @@ while True:
     d.rectangle([(0, 40), (50, 50)], fill=(39, 112, 229), outline=None)  #  color = blue
 
     #add text to the image
-    font_type  = ImageFont.truetype("arial.ttf", 35)
+    font_type  = ImageFont.truetype("arial.ttf", 25)
     a= n*10
     b = n*20
     d.text((0,0), f"{a}\n{b}", fill=(255,255,0), font = font_type)
