@@ -1,7 +1,7 @@
 import sqlite3
 
 # con = sqlite3.connect('db.sqlite')
-con = sqlite3.connect('customdb.sqlite')
+con = sqlite3.connect('dd\customdb.sqlite')
 cur = con.cursor()
 
 # Дорогой SQL, верни все столбцы всех записей из таблицы movies;

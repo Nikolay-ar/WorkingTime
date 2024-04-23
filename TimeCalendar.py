@@ -1,6 +1,8 @@
-from PyQt5.QtWidgets import QApplication, QDialog, QTableView, QStyledItemDelegate,\
-    QLCDNumber,QPushButton ,QVBoxLayout, QHBoxLayout, QLabel, QLayout, QHeaderView, QItemDelegate
-import sys, os, sqlite3
+import os
+import sys
+from PyQt5.QtWidgets import QApplication, QDialog, QTableView,\
+    QStyledItemDelegate, QLCDNumber, QPushButton, QVBoxLayout, \
+    QHBoxLayout, QLabel, QLayout, QHeaderView
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QTime, QTimer, Qt
 from time import strftime
@@ -8,14 +10,14 @@ from PyQt5.QtSql import QSqlQuery, QSqlDatabase, QSqlTableModel
 from datetime import datetime, timedelta
 
 box_style = ("border: 4px solid \'#2DACEB\';\n"
-                                       "border-radius: 9px;\n"
-                                       "font-size: 16px;\n"
-                                    #    "margin: 10px;\n"
-                                       "background: #FFFFFF")
+             "border-radius: 9px;\n"
+             "font-size: 16px;\n"
+             #    "margin: 10px;\n"
+             "background: #FFFFFF")
 bt_style = ("QPushButton {\n"
             "border: 0;\n"
             "border-radius: 8px;\n"
-            "background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, \n"
+            "background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0,\n"
             "stop:0 rgb(45, 172, 235), stop:1 rgb(72,102,175));\n"
             "color: #FFFFFF;\n"
             "padding: 8px 16px;\n"

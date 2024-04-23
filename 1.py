@@ -45,11 +45,7 @@ def what_weather(city):
             return '<ошибка на сервере погоды>'
     except requests.ConnectionError:
         return '<сетевая ошибка>'
-    
-    
-    
-    # Напишите тело этой функции.
-    # Не изменяйте остальной код!
+
 
 print('Погода в городах:')
 for city in cities:
