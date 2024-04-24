@@ -74,7 +74,7 @@ createFirstData()
 
 
 def getCountLastDW():                     # количество выше id где dw >= 1
-    query.exec(f"SELECT COUNT(*) FROM {tableName} \n"
+    query.exec(f"SELECT COUNT(*) FROM {tableName} "
                f"WHERE id >= (SELECT MAX(id) FROM {tableName} WHERE dw = 1)")
     query.last()
     query.value
@@ -256,7 +256,7 @@ class Window(QDialog):
         self.model.rowsInserted.connect(
             lambda: QTimer.singleShot(0, self.view.scrollToBottom))
 
-        self.model.setFilter(f"id in(select id from {tableName} \n"
+        self.model.setFilter(f"id in(select id from {tableName} "
                              f"ORDER BY id DESC LIMIT {countRowsDW})")
 
         self.model.select()
@@ -354,16 +354,16 @@ class Window(QDialog):
             getLastRecordDate(), "%d-%m").date().replace(year=2000)
         DayMonthNow = datetime.now().date().replace(year=2000)
         if DayFromBD != DayMonthNow:
-            query.exec_(f"INSERT INTO {tableName} (dw, day, startTime) \n"
-                        f"VALUES(strftime('%w', 'now'), strftime('%d-%m', \n"
-                        f"'now'), strftime('%H:%M', 'now', '-5 minutes',  \n"
+            query.exec_(f"INSERT INTO {tableName} (dw, day, startTime) "
+                        f"VALUES(strftime('%w', 'now'), strftime('%d-%m', "
+                        f"'now'), strftime('%H:%M', 'now', '-5 minutes',  "
                         f"'localtime'))")
             countRowsDW = getCountLastDW()
             numRecordsDB = getCountRecordsDB()
             if countRowsDW == 0:    # Если нет ни одного дня недели
                 countRowsDW = numRecordsDB
 
-            self.model.setFilter(f"id in(select id from {tableName} \n"
+            self.model.setFilter(f"id in(select id from {tableName} "
                                  f"ORDER BY id DESC LIMIT {countRowsDW}) ")
             self.model.select()
             self.view.setFixedHeight(
@@ -377,8 +377,8 @@ class Window(QDialog):
             print("Сегодняшняя дата начала рабочего времени уже проставлена")
 
     def addEndTime(self):
-        query.exec_(f"UPDATE {tableName} SET endTime = \n"
-                    f"strftime('%H:%M', 'now', '+5 minutes', 'localtime') \n"
+        query.exec_(f"UPDATE {tableName} SET endTime = "
+                    f"strftime('%H:%M', 'now', '+5 minutes', 'localtime') "
                     f"WHERE id = (SELECT MAX(ID)  FROM {tableName})")
         self.model.workedOvertime = []
         self.model.select()
@@ -412,7 +412,7 @@ def balanceTimeStrHM(*args):
 
 
 def getLastRecord():
-    query.exec(f"SELECT startTime FROM {tableName} \n"
+    query.exec(f"SELECT startTime FROM {tableName} "
                f"WHERE id = (SELECT MAX(ID) FROM {tableName})")
     query.last()
     query.value
